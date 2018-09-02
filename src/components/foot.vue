@@ -3,7 +3,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-3 mb-5 mb-lg-0">
-            <div class="footer-logo"><img src="img/logo-footer.svg" alt="..." class="img-fluid"></div>
+            <div class="footer-logo"><img src="../assets/img/logo-footer.svg" alt="..." class="img-fluid"></div>
           </div>
           <div class="col-lg-3 mb-5 mb-lg-0">
             <h5 class="footer-heading">Site pages</h5>
@@ -104,5 +104,5 @@ footer.main-footer {
 .copyrights {
   margin-top: 2rem;
   padding: 1.25rem 0;
-}	
+}
 </style>
