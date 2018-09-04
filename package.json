@@ -10,10 +10,13 @@
   },
   "dependencies": {
     "express": "^4.16.3",
+    "firebase": "^5.4.2",
     "jquery": "^3.3.1",
     "jquery.cookie": "^1.4.1",
     "serve-static": "^1.13.2",
-    "vue": "^2.5.17"
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1",
+    "vuefire": "^1.4.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0",

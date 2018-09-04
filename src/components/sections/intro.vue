@@ -3,8 +3,11 @@
    <section>
      <div class="container">
        <div class="text-center">
-         <h2>Track projects from start to finish </h2>
-         <p class="lead text-muted mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p><a href="#" class="btn btn-primary">Learn More</a>
+         <h2>Our main lines of research are: </h2>
+         <ol>
+           <li>Cognitive Informatics and cognitive computing in education.</li>
+           <li>Knowledge representation and knowledge management.</li>
+         </ol>
        </div>
        <div class="row">
          <div class="col-lg-7 mx-auto mt-5"><img src="../../assets/img/illustration-1.svg" alt="..." class="intro-image img-fluid"></div>
@@ -12,6 +15,11 @@
      </div>
    </section>
 </template>
+<script>
+  export default {
+    name: 'intro'
+  }
+</script>
 <style type="text/css">
 /*
 * =====================================================

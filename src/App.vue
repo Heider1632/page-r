@@ -1,31 +1,27 @@
 <template>
   <div id="app">
     <navbar />
-    <home />
-    <intro />
+    <main>
+      <router-view />
+    </main>
     <foot />
   </div>
 </template>
 
 <script>
-import home from './components/home'
 import navbar from './components/navbar'
-import intro from './components/sections/intro'
 import foot from './components/foot'
 
 export default {
   name: 'app',
   components: {
-    navbar, home, intro, foot
+    navbar, foot
   }
 }
 </script>
 
 <style>
-* =====================================================
-*     GENERAL
-* =====================================================
-*/
+/* GENERAL */
 .text-bold {
   font-weight: 700;
 }

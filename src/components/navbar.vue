@@ -3,27 +3,75 @@
     <header class="header">
       <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container"><a href="./" class="navbar-brand">
-          <img src="../assets/img/logo.svg" alt="" class="img-fluid"></a>
+          <img src="../assets/img/logo.png" alt="" class="img-fluid"></a>
           <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right">Menu<i class="fa fa-bars ml-2"></i></button>
           <div id="navbarSupportedContent" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                   <!-- Link-->
-                  <li class="nav-item"> <a href="index.html" class="nav-link active">Home</a></li>
+                  <li class="nav-item"> 
+                    <router-link class="nav-link active" to="/">Home</router-link>
+                  </li>
                   <!-- Link-->
-                  <li class="nav-item"> <a href="faq.html" class="nav-link">FAQ</a></li>
+                  <li class="nav-item"> 
+                    <router-link class="nav-link" to="/research">Research</router-link>
+                  </li>
                   <!-- Link-->
-                  <li class="nav-item"> <a href="contact.html" class="nav-link">Contact</a></li>
+                  <li class="nav-item"> 
+                    <router-link class="nav-link" to="/publications">Publications</router-link>
+                  </li>
                   <!-- Link-->
-                  <li class="nav-item"> <a href="text.html" class="nav-link">Text Page</a></li>
-              <li class="nav-item dropdown"><a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Dropdown</a>
-                <div class="dropdown-menu"><a href="faq.html" class="dropdown-item">FAQ</a><a href="contact.html" class="dropdown-item">Contact</a><a href="text.html" class="dropdown-item">Text Page</a></div>
-              </li>
+                  <li class="nav-item"> 
+                    <router-link class="nav-link" to="/people">People</router-link>
+                  </li>
+                  <!-- Link-->
+                  <li class="nav-item"> 
+                    <router-link class="nav-link" to="/news">News</router-link>
+                  </li>
+                  <li v-if="isLoggedIn" class="nav-item dropdown">
+                    <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Admin</a>
+                  <div class="dropdown-menu">
+                      <router-link class="dropdown-item" to="/config">Config</router-link>
+                      <a v-if="isLoggedIn" v-on:click="logout"><a>Logout</a></a>
+                  </div>
+                  </li>
+                  <li v-else class="nav-item">
+                    <router-link class="dropdown-item" to="/login">Acceder</router-link>
+                  </li>
             </ul>
           </div>
         </div>
       </nav>
     </header>
 </template>
+<script>
+import * as firebase from 'firebase';
+export default {
+  name: 'navbar',
+  data(){
+    return{
+      isLoggedIn: false,
+      currentUser: false
+    }
+  },
+  created() {
+    if (firebase.auth().currentUser) {
+      this.isLoggedIn = true;
+    }
+  },
+  methods: {
+    logout: function() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$router.go({ path: this.$router.path });
+        });
+    }
+  }
+  
+}
+</script>
+
 <style type="text/css">
 /*
 * =====================================================
