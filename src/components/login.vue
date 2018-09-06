@@ -1,5 +1,15 @@
 <template>
-    <div>hola desde el login</div>
+  <main>
+      <section>
+        <legend>Acceder</legend>
+        <label>Email</label>
+        <input type="text" v-model="email">
+        <label>Password</label>
+        <input type="password" v-model="password">
+
+        <button @click="handleLogin">Ir</button>
+      </section>
+  </main>
 </template>
 <style>
 
@@ -15,7 +25,7 @@ export default {
         }
     },
     methods: {
-    login: function(e) {
+    handleLogin: function(e) {
       firebase
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)

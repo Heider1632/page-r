@@ -27,11 +27,15 @@
                   <li class="nav-item"> 
                     <router-link class="nav-link" to="/news">News</router-link>
                   </li>
+                  <!-- Link-->
+                  <li class="nav-item"> 
+                    <router-link class="nav-link" to="/contact">Contact</router-link>
+                  </li>
                   <li v-if="isLoggedIn" class="nav-item dropdown">
                     <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Admin</a>
                   <div class="dropdown-menu">
                       <router-link class="dropdown-item" to="/config">Config</router-link>
-                      <a v-if="isLoggedIn" v-on:click="logout"><a>Logout</a></a>
+                      <a class="dropdown-item" v-on:click="logout"><a>Logout</a></a>
                   </div>
                   </li>
                   <li v-else class="nav-item">
@@ -44,7 +48,7 @@
     </header>
 </template>
 <script>
-import * as firebase from 'firebase';
+import firebase from 'firebase';
 export default {
   name: 'navbar',
   data(){

@@ -1,11 +1,15 @@
 <template>
-    <div>hola bienvenido a las publicaciones</div>
+ <main>
+     <section>
+         <div>Hola desde las publicaciones</div>
+     </section>
+ </main>
 </template>
 <style>
 
 </style>
 <script>
-export default {
+export default{
     
 }
 </script>

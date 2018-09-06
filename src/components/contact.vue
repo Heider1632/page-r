@@ -1,4 +1,5 @@
 <template>
+ <main>
  <!-- Contact Section-->
     <section>
       <div class="container">
@@ -54,4 +55,5 @@
         </div>
       </div>
     </section>
+  </main>
 </template>
