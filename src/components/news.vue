@@ -5,12 +5,12 @@
       <div class="container text-center text-lg-left">
         <div class="row align-items-center">
           <div class="col-lg-7">
-            <h2 class="divider-heading">Curious how Appton <br>works for large</h2>
+            <h2 class="divider-heading">Welcome to news</h2>
             <div class="row">
               <div class="col-lg-10">
                 <p class="lead divider-subtitle mt-2 text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing. Vitae animi mollitia cumque sunt soluta. consectetur adipisicing.</p>
               </div>
-            </div><a href="#" class="btn btn-primary">Learn More</a>
+            </div>
           </div>
           <div class="col-lg-5 mt-5 mt-lg-0"><img src="https://d19m59y37dris4.cloudfront.net/appton/1-0/img/illustration-2.svg" alt="" class="divider-image img-fluid"></div>
         </div>
@@ -19,8 +19,23 @@
     <!-- News Section-->
     <section>
       <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <!-- sidebar-->
+            <aside class="sidebar">
+            <div class="search mb-4">
+              <form action="#" class="search-form">
+                <div class="form-group">
+                  <input type="search" name="search" placeholder="Search" class="form-control">
+                  <button type="submit"> <i class="fa fa-search"></i></button>
+                </div>
+              </form>
+            </div>
+            </aside>
+          </div>
+        </div>
         <div class="row"> 
-          <div class="col-lg-8">   
+          <div class="col-lg-12">   
             <div id="accordion" class="faq accordion accordion-custom pb-5">
               <!-- question-->
               <div class="card">
@@ -68,35 +83,175 @@
               </div>
             </div>
         </div>
-          <!-- sidebar-->
-          <aside class="sidebar col-lg-4 mt-5 mt-lg-0">
-            <div class="search mb-4">
-              <form action="#" class="search-form">
-                <div class="form-group">
-                  <input type="search" name="search" placeholder="Search" class="form-control">
-                  <button type="submit"> <i class="fa fa-search"></i></button>
-                </div>
-              </form>
-            </div>
-            <div class="sidebar-widget mb-4">
-              <h4 class="sidebar-widget-heading">Questions Categories</h4>
-              <ul class="list-unstyled pl-0 mt-4">
-                <li> <a href="#" class="categories-link">WordPress installation</a></li>
-                <li><a href="#" class="categories-link">Troubleshooting</a></li>
-                <li><a href="#" class="categories-link">Pricing &amp; Support</a></li>
-                <li><a href="#" class="categories-link">Tips &amp; Tricks</a></li>
-                <li><a href="#" class="categories-link">Managing Files</a></li>
-              </ul>
-            </div>
-          </aside>
         </div>
         </div>
         </section>
-        <divider />
     </main>
 </template>
-<style>
+<script>
+import firebase from 'firebase'
+export default {
+    data(){
+      return{
+          news: []
+        }
+    },
+    created(){
+      firebase.database().ref('new')
+            .on('value', snapshot => this.cargar(snapshot.val()))
+    },
+    methods:{
+       cargar(researchs){
+            this.news = []; 
 
+            for(let key in news){
+
+                this.news.push({
+                    title: news[key].title,
+                    body: news[key].body,
+                    picture: news[key].picture
+                });
+            }
+        }
+    }
+}
+
+</script>
+
+<style>
+/*
+* =====================================================
+*     FAQ SECTION
+* =====================================================
+*/
+.accordion-custom .card {
+  border-radius: 0;
+  border: none;
+  margin-bottom: 1.3rem;
+  background: linear-gradient(45deg, #0069d9, #0069d9);
+}
+
+.accordion-custom .card-header {
+  border: none;
+  padding: 0;
+  background: none;
+}
+
+.accordion-custom .card-header button {
+  color: #333;
+  text-transform: none !important;
+  background: none;
+  display: block;
+  border: none;
+  padding: 1.5rem 2.1rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  background: #f5f5f5;
+  outline: none;
+}
+
+.accordion-custom .card-header button[aria-expanded='true'] {
+  background: none;
+  color: #fff;
+}
+
+.accordion-custom .card-header button:hover, .accordion-custom .card-header button:focus {
+  text-decoration: none;
+}
+
+.accordion-custom .accordion-heading {
+  font-size: 1.05rem;
+}
+
+.accordion-custom .accordion-heading i {
+  font-size: 2.2rem;
+  margin-right: 1.5rem;
+}
+
+.accordion-custom .card-body {
+  color: #fff;
+  padding: 2rem 2.1rem;
+  padding-top: 0.7rem;
+  font-weight: 300;
+  font-size: 0.9rem;
+  line-height: 1.7rem;
+}
+
+/*
+* =====================================================
+*     SIDEBAR
+* =====================================================
+*/
+.sidebar .search .form-group {
+  position: relative;
+}
+
+.sidebar .search .form-control {
+  background: #f5f5f5;
+  border: 1px solid transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  padding: 1.3rem 2rem;
+}
+
+.sidebar .search .form-control:focus {
+  border-color: #0069d9;
+}
+
+.sidebar .search .form-control:focus + button {
+  background: #0069d9;
+  color: #fff;
+  border-color: #0069d9;
+}
+
+.sidebar .search button {
+  width: 4rem;
+  text-align: center;
+  line-height: 2.7rem;
+  height: 100%;
+  background: #f2f2f2;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #aaa;
+  border: 1px solid transparent;
+  border-left: 0;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.sidebar-widget {
+  padding: 2.5rem;
+}
+
+.categories-link {
+  color: #777;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+}
+
+.categories-link:hover {
+  color: #0069d9;
+  text-decoration: none;
+}
+
+.tag-link {
+  color: #777;
+  padding: 0.5rem 1.2rem;
+  background: #fff;
+  margin: 0.2rem;
+}
+
+.tag-link:hover {
+  background: #0069d9;
+  color: #fff;
+  text-decoration: none;
+}
 </style>
 <script>
 import divider from './sections/divider'

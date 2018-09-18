@@ -72,9 +72,9 @@ $(function () {
     // =====================================================
     //      SCROLL SPY
     // =====================================================
-    $('body').scrollspy({
+    /*$('body').scrollspy({
         target: '#navbarSupportedContent',
         offset: 80
-    });
+    });*/
 
 });

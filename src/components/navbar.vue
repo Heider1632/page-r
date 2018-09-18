@@ -35,6 +35,7 @@
                     <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Admin</a>
                   <div class="dropdown-menu">
                       <router-link class="dropdown-item" to="/config">Config</router-link>
+                      <router-link class="dropdown-item" to="/post">post</router-link>
                       <a class="dropdown-item" v-on:click="logout"><a>Logout</a></a>
                   </div>
                   </li>
@@ -88,7 +89,7 @@ nav.navbar {
 }
 
 nav.navbar.active {
-  background: #fff;
+  background: #54a0ff;
   -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
 }

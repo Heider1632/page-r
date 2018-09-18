@@ -8,6 +8,7 @@ import news from '../components/news'
 import contact from '../components/contact'
 import login from '../components/login'
 import config from '../components/config'
+import post from '../components/post'
 import firebase from 'firebase'
 
 Vue.use(VueRouter);
@@ -60,6 +61,12 @@ let router = new VueRouter({
 			name: 'config',
 			component: config,
 			meta: { requiresAuth: true }
+		},
+		{
+			path: '/post',
+			name: 'post',
+			component: post,
+			meta: { requiresAuth: true }
 		}
 
 	]
@@ -73,29 +80,20 @@ router.beforeEach((to, from, next) => {
 	  if (!firebase.auth().currentUser) {
 		// Go to login
 		next({
-		  path: '/login',
-		  query: {
-			redirect: to.fullPath
-		  }
+		  path: '/',
+		  query: { redirect: to.fullPath }
 		});
 	  } else {
 		// Proceed to route
-		next({
-			path: '/config',
-		  query: {
-			redirect: to.fullPath
-			}
-		});
+		next();
 	  }
 	} else if (to.matched.some(record => record.meta.requiresGuest)) {
 	  // Check if NO logged user
 	  if (firebase.auth().currentUser) {
 		// Go to login
 		next({
-		  path: '/',
-		  query: {
-			redirect: to.fullPath
-		  }
+		  path: '/config',
+		  query: { redirect: to.fullPath }
 		});
 	  } else {
 		// Proceed to route

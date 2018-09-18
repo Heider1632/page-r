@@ -4,7 +4,7 @@
      <div class="container">
        <div class="text-center">
          <h2>Our main lines of research are: </h2>
-         <ol>
+         <ol class="line-inv">
            <li>Cognitive Informatics and cognitive computing in education.</li>
            <li>Knowledge representation and knowledge management.</li>
          </ol>
@@ -43,4 +43,5 @@
   margin: 0 auto;
   margin-bottom: 1rem;
 }
+
 </style>
